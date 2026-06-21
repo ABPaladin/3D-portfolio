@@ -158,11 +158,19 @@ svg{
   align-items: center;
   position: absolute;
   top: 50%;
-  left: 50%;
+  /* Pe toată lățimea + centrat, ca să nu se înghesuie pe mai multe rânduri
+     pe mobil (altfel reveal-ul cu overflow:hidden se strică la wrap). */
+  left: 0;
+  width: 100%;
   font-weight: 500;
   font-size: 16px;
   color: var(--color-text);
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
+}
+
+/* Siguranță în plus: textul de intro rămâne pe un singur rând. */
+.intro-text .line{
+  white-space: nowrap;
 }
 
 .arrow-svg-wrapper{
