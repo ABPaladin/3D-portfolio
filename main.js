@@ -1,15 +1,9 @@
 import "./style.css";
+import { inject } from "@vercel/analytics";
+import { injectSpeedInsights } from "@vercel/speed-insights";
 import Experience from "./Experience/Experience.js";
 
+inject();
+injectSpeedInsights();
+
 const experience = new Experience(document.querySelector(".experience-canvas"));
-
-let btn = document.getElementById("stop-music")
-
-
-function stopMusic() {
-    var music = document.getElementById("background-music");
-    music.pause();
-}
-btn.onclick = () => {
-    stopMusic()
-}
