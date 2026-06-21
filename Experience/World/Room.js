@@ -99,6 +99,20 @@ export default class Room {
 
         this.actualRoom.rotation.y = this.lerp.current;
 
+        // Luminile interioare urmează poziția camerei (la scroll / în intro
+        // camera își schimbă position), ca să nu rămână în urmă. Urmăresc doar
+        // translația — dacă urmăreau și scalarea, lumina era împinsă departe la
+        // scroll (când camera se mărește) și „dispărea".
+        const env = this.experience.world.environment;
+        if (env && env.lampLightBase) {
+            env.lampLight.position
+                .copy(env.lampLightBase)
+                .add(this.actualRoom.position);
+            env.screenLight.position
+                .copy(env.screenLightBase)
+                .add(this.actualRoom.position);
+        }
+
         //this.mixer.update(this.time.delta * 0.0009);
     }
 }

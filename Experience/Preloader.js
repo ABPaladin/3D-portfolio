@@ -339,6 +339,9 @@ export default class Preloader extends EventEmitter {
         window.removeEventListener("wheel", this.scrollOnceEvent);
         window.removeEventListener("touchstart", this.touchStart);
         window.removeEventListener("touchmove", this.touchMove);
+        if (this.arrowButton) {
+            this.arrowButton.removeEventListener("click", this.arrowClick);
+        }
     }
 
     async playIntro() {
@@ -351,6 +354,17 @@ export default class Preloader extends EventEmitter {
         window.addEventListener("wheel", this.scrollOnceEvent);
         window.addEventListener("touchstart", this.touchStart);
         window.addEventListener("touchmove", this.touchMove);
+
+        // Click/tap pe săgeată = avansează. Fiabil pe mobil și în devtools
+        // mobile mode, unde evenimentul "wheel" adesea nu se declanșează.
+        this.arrowButton = document.querySelector(".arrow-svg-wrapper");
+        this.arrowClick = () => {
+            this.removeEventListeners();
+            this.playSecondIntro();
+        };
+        if (this.arrowButton) {
+            this.arrowButton.addEventListener("click", this.arrowClick);
+        }
     }
     async playSecondIntro() {
         this.moveFlag = false;

@@ -137,6 +137,16 @@ svg{
 }
 
 /* Preloader Stuff */
+.line{
+  display: block;
+  overflow: hidden;
+}
+
+.word{
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .animatedis{
   display: inline-block;
   transform: translateY(100%);
@@ -163,6 +173,7 @@ svg{
   color: var(--color-text);
   transform: translate(-50%, -50%);
   animation: bounce 0.5s ease-in alternate infinite;
+  cursor: pointer;
 }
 
 @keyframes bounce {
@@ -186,15 +197,52 @@ svg{
   top: 48px;
   right: 48px;
   z-index: 99999999999999;
+  /* Fără cursor de text / selecție pe bara de unelte */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
 }
 
-.sun-wrapper, 
+.sun-wrapper,
 .moon-wrapper{
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   color: var(--color-text);
+  cursor: default;
+}
+
+/* Music mute button */
+.music-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-right: 16px;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, color 0.5s;
+}
+
+.music-button:hover{
+  transform: scale(1.1);
+}
+
+.music-button .icon-volume-off{
+  display: none;
+}
+
+.music-button.is-muted .icon-volume-on{
+  display: none;
+}
+
+.music-button.is-muted .icon-volume-off{
+  display: block;
 }
 
 .toggle-button{
@@ -317,6 +365,27 @@ svg{
   color: var(--color-text);
 }
 
+/* Clickable link buttons */
+.section-link{
+  display: inline-block;
+  margin-top: 6px;
+  padding: 6px 16px;
+  border: 2px solid var(--color-text);
+  border-radius: 999px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  word-break: break-word;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.section-link:hover{
+  background-color: var(--color-text);
+  color: var(--color-background);
+}
+
 /* Fancy Decoration Part of Section */
 .section-title{
   position: relative;
@@ -388,7 +457,10 @@ svg{
 .hero-main{
   position: absolute;
   bottom: 168px;
-  left: 0;
+  /* Iese din wrapper-ul centrat (max-width:1100px; margin:0 auto) și se
+     așază la ~64px de marginea STÂNGĂ a ecranului, pe orice rezoluție.
+     Mărește/micșorează 64px ca să-l apropii/depărtezi de margine. */
+  left: calc((100% - 100vw) / 2 + 64px);
   color: var(--color-text);
 }
 
@@ -455,6 +527,7 @@ svg{
   }
   .hero-main{
     bottom: 120px;
+    left: 0;
   }
   .hero-second{
     top: 160px;

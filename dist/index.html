@@ -8,8 +8,28 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, target-densityDpi=device-dpi, minimal-ui"
     />
     <title>Alexandru Barbanoua</title>
-    <script type="module" crossorigin src="/assets/index-Bg6qJRDC.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DM1ju42E.css">
+    <!-- CSS critic inline: acoperă pagina cu preloader-ul de la primul paint,
+         ca să nu apară un flash cu tot HTML-ul nestilizat la reload (în dev,
+         style.css se încarcă prin JS). -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ebebeb;
+      }
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #ebebeb;
+        z-index: 99999999999999999;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-BgI-4F9L.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CjewctE-.css">
   </head>
 
   <body class="light-theme">
@@ -32,11 +52,15 @@
     </div>
 
     <div class="page" asscroll-container>
-      <!-- <button onclick="stopMusic()" id="stop-music">
-      <img src="./volume_up.svg" alt="volum-icon" id="volume_up">
-    </button> -->
-
       <div class="toggle-bar">
+        <button class="music-button" id="music-button" aria-label="Toggle background music">
+          <svg class="icon-volume-on" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/>
+          </svg>
+          <svg class="icon-volume-off" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/>
+          </svg>
+        </button>
         <div class="sun-wrapper">
           <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
             <path
@@ -73,7 +97,7 @@
             </div>
 
             <div class="hero-main">
-              <h1 class="hero-main-title">Alexandru Barbanoua</h1>
+              <h1 class="hero-main-title">Alexandru<br />Barbanoua</h1>
               <p class="hero-main-description">
                 Full-Stack programmer | 3D Artist
               </p>
@@ -115,9 +139,25 @@
               below. Know English ✨Fluently✨.
             </p>
             <h3 class="section-heading">Where you can find them.</h3>
-            <p class="section-text">My github: https://github.com/ABPaladin</p>
             <p class="section-text">
-              My repl: https://replit.com/@alexpaladin8
+              My github:
+              <a
+                class="section-link"
+                href="https://github.com/ABPaladin"
+                target="_blank"
+                rel="noopener noreferrer"
+                >github.com/ABPaladin</a
+              >
+            </p>
+            <p class="section-text">
+              My repl:
+              <a
+                class="section-link"
+                href="https://replit.com/@alexpaladin8"
+                target="_blank"
+                rel="noopener noreferrer"
+                >replit.com/@alexpaladin8</a
+              >
             </p>
           </div>
         </section>
@@ -179,13 +219,39 @@
           <div class="section-detail-wrapper">
             <h3 class="section-heading">My socials:</h3>
             <p class="section-text">
-              facebook: https://www.facebook.com/alexandru.barbanoua.5/
+              facebook:
+              <a
+                class="section-link"
+                href="https://www.facebook.com/alexandru.barbanoua.5/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >facebook.com/alexandru.barbanoua.5</a
+              >
             </p>
             <p class="section-text">instagram:</p>
-            <p class="section-text">github: https://github.com/ABPaladin</p>
-            <p class="section-text">Phone number: 069677787</p>
             <p class="section-text">
-              Fivver: https://www.fiverr.com/alexpaladin7?public_mode=true
+              github:
+              <a
+                class="section-link"
+                href="https://github.com/ABPaladin"
+                target="_blank"
+                rel="noopener noreferrer"
+                >github.com/ABPaladin</a
+              >
+            </p>
+            <p class="section-text">
+              Phone number:
+              <a class="section-link" href="tel:069677787">069677787</a>
+            </p>
+            <p class="section-text">
+              Fivver:
+              <a
+                class="section-link"
+                href="https://www.fiverr.com/alexpaladin7?public_mode=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                >fiverr.com/alexpaladin7</a
+              >
             </p>
           </div>
         </section>
